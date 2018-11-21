@@ -53,7 +53,7 @@ function createBookCoverArray(allBooks) {
 
     }
 
-    console.log(bookCoverArray)
+//    console.log(bookCoverArray)
 }
 
 //createBookCoverArray()
@@ -72,24 +72,24 @@ function createBookTitleArray(allBooks) {
         //    })))
     }
 
-    console.log(bookTitleArray)
+//    console.log(bookTitleArray)
 }
 
 
 function createBookCoverDetailedArray(allBooks) {
 
-    bookTitleDetailedArray = [];
+    bookCoverDetailedArray = [];
 
     for (var i = 0; i < allBooks.length; i++) {
 
-        bookTitleDetailedArray.push(allBooks[i].detalle)
+        bookCoverDetailedArray.push(allBooks[i].detalle)
 
         //    bookTitleArray.push(allBooks.map((allBooks => {
         //        return bookTitle;
         //    })))
     }
 
-    console.log(bookTitleDetailedArray)
+//    console.log(bookTitleDetailedArray)
 }
 
 function createBookDescriptionArray(allBooks) {
@@ -105,7 +105,7 @@ function createBookDescriptionArray(allBooks) {
         //    })))
     }
 
-    console.log(bookDescriptionArray)
+//    console.log(bookDescriptionArray)
 }
 
 function createLanguageArray(allBooks) {
@@ -121,20 +121,60 @@ function createLanguageArray(allBooks) {
         //    })))
     }
 
-    console.log(languageArray)
+//    console.log(languageArray)
 }
 
 function createImage(allBooks) {
 
     for (var i = 0; i < allBooks.length; i++) {
 
-        var imageContainer = document.getElementById("bookLibrary");
+        var frontImageContainer = document.getElementById("flip-card-front");
         var bookImage = document.createElement("IMG");
         bookImage.setAttribute('src', bookCoverArray[i]);
-        imageContainer.appendChild(bookImage);
+        frontImageContainer.appendChild(bookImage);
+        
+        var backImageContainer = document.getElementById("flip-card-back");
+        var bookImage = document.createElement("IMG");
+        bookImage.setAttribute('src', bookCoverDetailedArray[i]);
+        backImageContainer.appendChild(bookImage);
+    
+        var bookTitle = document.createElement("h1");
+        bookTitle.innerHTML = bookTitleArray[i];
+        backImageContainer.appendChild(bookTitle);
+        
 
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //
