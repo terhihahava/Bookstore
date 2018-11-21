@@ -37,3 +37,23 @@ console.log(bookCoverArray)
 }
 
 //createBookCoverArray()
+
+function createFancyBox() {
+
+
+    var fancyBoxcontainer = document.getElementById("bookLibrary");
+    
+    for (var i = 0; i < allBooks.length; i++) {
+    
+     <a href="bookCoverArray[i]" data-fancybox="gallery" data-caption="Caption">
+            <img src="thumbnail_1.jpg" alt="" />
+        </a>
+
+
+    var row = tablebody1.insertRow();
+
+    row.insertCell().innerHTML = "Democrats";
+    
+
+
+}
