@@ -16,44 +16,153 @@ fetch(url)
             allBooks.descripcion
         let language = allBooks.idioma
 
-//        console.log(allBooks[0].portada)
+        //        console.log(allBooks[0].portada)
 
-       createBookCoverArray(allBooks)
+        createBookCoverArray(allBooks)
+        createBookTitleArray(allBooks)
+        createBookCoverDetailedArray(allBooks)
+        createBookDescriptionArray(allBooks)
+        createLanguageArray(allBooks)
+
+        createImage(allBooks)
+
+
 
     })
 
 
 
 function createBookCoverArray(allBooks) {
-    
-    let bookCover = allBooks[0].portada;
+
+
+    //    console.log(allBooks)
+    //    console.log(allBooks[0])
+    //    console.log(allBooks[0].portada)
+    //    console.log(allBooks[1].portada)
+
+
     bookCoverArray = [];
-    
-    bookCoverArray.push(allBooks.map((allBooks => {
-            return bookCover;
-        })))
-                        
-console.log(bookCoverArray)
+
+    for (var i = 0; i < allBooks.length; i++) {
+
+        bookCoverArray.push(allBooks[i].portada)
+
+        //    bookCoverArray.push(allBooks.map((allBooks => {
+        //        return bookCover;
+        //    })))
+
+    }
+
+    console.log(bookCoverArray)
 }
 
 //createBookCoverArray()
 
-function createFancyBox() {
 
+function createBookTitleArray(allBooks) {
 
-    var fancyBoxcontainer = document.getElementById("bookLibrary");
-    
+    bookTitleArray = [];
+
     for (var i = 0; i < allBooks.length; i++) {
-    
-     <a href="bookCoverArray[i]" data-fancybox="gallery" data-caption="Caption">
-            <img src="thumbnail_1.jpg" alt="" />
-        </a>
 
+        bookTitleArray.push(allBooks[i].titulo)
 
-    var row = tablebody1.insertRow();
+        //    bookTitleArray.push(allBooks.map((allBooks => {
+        //        return bookTitle;
+        //    })))
+    }
 
-    row.insertCell().innerHTML = "Democrats";
-    
-
-
+    console.log(bookTitleArray)
 }
+
+
+function createBookCoverDetailedArray(allBooks) {
+
+    bookTitleDetailedArray = [];
+
+    for (var i = 0; i < allBooks.length; i++) {
+
+        bookTitleDetailedArray.push(allBooks[i].detalle)
+
+        //    bookTitleArray.push(allBooks.map((allBooks => {
+        //        return bookTitle;
+        //    })))
+    }
+
+    console.log(bookTitleDetailedArray)
+}
+
+function createBookDescriptionArray(allBooks) {
+
+    bookDescriptionArray = [];
+
+    for (var i = 0; i < allBooks.length; i++) {
+
+        bookDescriptionArray.push(allBooks[i].descripcion)
+
+        //    bookTitleArray.push(allBooks.map((allBooks => {
+        //        return bookTitle;
+        //    })))
+    }
+
+    console.log(bookDescriptionArray)
+}
+
+function createLanguageArray(allBooks) {
+
+    languageArray = [];
+
+    for (var i = 0; i < allBooks.length; i++) {
+
+        languageArray.push(allBooks[i].idioma)
+
+        //    bookTitleArray.push(allBooks.map((allBooks => {
+        //        return bookTitle;
+        //    })))
+    }
+
+    console.log(languageArray)
+}
+
+function createImage(allBooks) {
+
+    for (var i = 0; i < allBooks.length; i++) {
+
+        var imageContainer = document.getElementById("bookLibrary");
+        var bookImage = document.createElement("IMG");
+        bookImage.setAttribute('src', bookCoverArray[i]);
+        imageContainer.appendChild(bookImage);
+
+    }
+}
+
+
+//
+//function createFancyBox(allBooks) {
+//    
+//    $("img").fancybox();
+//    //document.querySelectorAll("img")
+//
+//
+//    var imageContainer = document.getElementById("bookLibrary");
+//
+//    for (var i = 0; i < allBooks.length; i++) {
+//
+//        var bookImage = document.createElement("IMG");
+//        bookImage.setAttribute('src', bookCoverArray[i]);
+//        bookImage.setAttribute("data-fancybox", "gallery");
+//        bookImage.setAttribute("alt", "bookTitleArray")
+//        fancyBoxcontainer.appendChild(bookImage);
+//
+//        var a = document.createElement("a");
+//        a.setAttribute('href', bookCoverArray[i]);
+//        bookImage.appendChild(a);
+//
+//        //             <a href="bookCoverArray[i]" data-fancybox="gallery" data-caption="Caption">
+//        //                    <img src="thumbnail_1.jpg" alt="" />
+//        //                </a>
+//
+//
+//    }
+//
+
