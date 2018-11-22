@@ -174,33 +174,6 @@ function createImage(allBooks) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //
 //function createFancyBox(allBooks) {
 //    
@@ -208,25 +181,24 @@ function createImage(allBooks) {
 //    //document.querySelectorAll("img")
 //
 //
-//    var imageContainer = document.getElementById("bookLibrary");
-//
-//    for (var i = 0; i < allBooks.length; i++) {
-//
-//        var bookImage = document.createElement("IMG");
-//        bookImage.setAttribute('src', bookCoverArray[i]);
-//        bookImage.setAttribute("data-fancybox", "gallery");
-//        bookImage.setAttribute("alt", "bookTitleArray")
-//        fancyBoxcontainer.appendChild(bookImage);
-//
-//        var a = document.createElement("a");
-//        a.setAttribute('href', bookCoverArray[i]);
-//        bookImage.appendChild(a);
-//
-//        //             <a href="bookCoverArray[i]" data-fancybox="gallery" data-caption="Caption">
-//        //                    <img src="thumbnail_1.jpg" alt="" />
-//        //                </a>
-//
-//
-//    }
-//
 
+
+//        var modal = document.getElementById('myModal');
+//
+//
+//        var popupImage = document.createElement("IMG");
+//        popUpImage.setAttribute("src", bookCoverDetailedArray[i]);
+////        var captionText = document.getElementById("caption");
+//        button.onclick = function () {
+//            modal.style.display = "block";
+////            popupImage.src = bookCoverDetailedArray[i]
+//            captionText.innerHTML = this.alt;
+//        }
+//
+//        // Get the <span> element that closes the modal
+//        var span = document.getElementsByClassName("close")[0];
+//
+//        // When the user clicks on <span> (x), close the modal
+//        span.onclick = function () {
+//            modal.style.display = "none";
+//        }
