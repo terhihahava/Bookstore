@@ -1,3 +1,15 @@
+#flexbox-header {display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    }
+
+#search-bar {width: 300px !important;}
+
+#nav-bar {width: 320px !important;
+background-color: white !important}
+
+
 #allMyBooks {
      display: flex;
     flex-wrap: wrap;
@@ -39,6 +51,7 @@
 .book-description,
 book-title {
     color: black;
+    
 }
 
 /* Style the front side (fallback if image is missing) */
@@ -49,10 +62,30 @@ book-title {
 /* Style the back side */
 .flip-card-back {
     transform: rotateY(180deg);
+    align-items: center;
 }
 
 IMG {
     height: 330px;
     width: 213px;
     margin: 30px;
+}
+
+h1 {font-family: sans-serif !important;
+font-size: 25px !important;
+}
+
+p {
+    font-family: sans-serif !important;
+font-size: 17px !important;
+    text-align: justify;
+     width: 213px;
+}
+
+.logo {
+    
+    width: 153px;
+    height: 120px;
+    padding: 0px;
+    border: 0px;
 }
