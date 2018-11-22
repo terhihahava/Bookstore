@@ -24,8 +24,9 @@ fetch(url)
         createBookDescriptionArray(allBooks)
         createLanguageArray(allBooks)
 
-        createImage(allBooks)
-//        createFilteredBooks(allBooks)
+                createImage(allBooks)
+        createFilteredBooks(allBooks)
+
 
         //        createPopUp(allBooks)
 
@@ -130,7 +131,7 @@ function createLanguageArray(allBooks) {
 function createImage(allBooks) {
 
     var flipCardContainer = document.getElementById("allMyBooks");
-    //    console.log(flipCardContainer)
+    console.log(flipCardContainer)
 
     for (var i = 0; i < allBooks.length; i++) {
         var flipCard = document.createElement("div");
@@ -207,11 +208,10 @@ function createFilteredBooks(allBooks) {
 
             }
         }
-        console.log(bookTitleResults)
 
         for (var i = 0; i < bookDescriptionResults.length; i++) {
 
-            //            console.log(bookDescriptionResults[i])
+            console.log(bookTitleResults)
 
 
             var flipCardContainer = document.getElementById("allMyBooks");
@@ -256,7 +256,10 @@ function createFilteredBooks(allBooks) {
         }
 
     })
+
+
 }
+
 
 //function createPopUp(allBooks) {
 //
