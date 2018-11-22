@@ -25,6 +25,9 @@ fetch(url)
         createLanguageArray(allBooks)
 
         createImage(allBooks)
+//        createFilteredBooks(allBooks)
+
+        //        createPopUp(allBooks)
 
 
 
@@ -174,6 +177,132 @@ function createImage(allBooks) {
 
 }
 
+
+function createFilteredBooks(allBooks) {
+
+    let bookCoverResults = [];
+    let bookCoverDetailedResults = [];
+    let bookTitleResults = [];
+    let bookDescriptionResults = [];
+    let bookLanguageResults = [];
+
+    let searchButton = document.getElementById("search-button")
+    searchButton.addEventListener("click", function (e) {
+
+        const searchField = document.forms["search-bar"].querySelector("input");
+        const term = searchField.value.toLowerCase();
+
+        console.log(term)
+
+
+        for (var i = 0; i < allBooks.length; i++) {
+
+
+            if (bookTitleArray[i].toLowerCase().indexOf(term) != -1 || bookDescriptionArray[i].toLowerCase().indexOf(term) != -1) {
+
+                bookCoverResults.push(bookCoverArray[i]);
+                bookCoverDetailedResults.push(bookCoverDetailedArray[i]);
+                bookTitleResults.push(bookTitleArray[i]);
+                bookDescriptionResults.push(bookDescriptionArray[i]);
+
+            }
+        }
+        console.log(bookTitleResults)
+
+        for (var i = 0; i < bookDescriptionResults.length; i++) {
+
+            //            console.log(bookDescriptionResults[i])
+
+
+            var flipCardContainer = document.getElementById("allMyBooks");
+
+            var flipCard = document.createElement("div");
+            flipCard.setAttribute("class", "flip-card");
+
+
+            var flipCardInner = document.createElement("div");
+            flipCardInner.setAttribute("class", "flip-card-inner");
+            flipCard.appendChild(flipCardInner);
+
+            flipCardFront = document.createElement("div");
+            flipCardFront.setAttribute("class", "flip-card-front");
+            flipCardInner.appendChild(flipCardFront);
+
+
+            var bookImage = document.createElement("IMG");
+            bookImage.setAttribute('src', bookCoverResults[i]);
+            flipCardFront.appendChild(bookImage);
+
+            flipCardBack = document.createElement("div");
+            flipCardBack.setAttribute("class", "flip-card-back");
+            flipCardInner.appendChild(flipCardBack);
+
+            var bookTitle = document.createElement("h1");
+            bookTitle.innerHTML = bookTitleResults[i];
+            flipCardBack.appendChild(bookTitle);
+
+            var bookDescription = document.createElement("p");
+            bookDescription.innerHTML = bookDescriptionResults[i];
+            bookTitle.setAttribute("class", "book-description");
+            flipCardBack.appendChild(bookDescription);
+
+            var button = document.createElement("button");
+            button.innerHTML = "Read more";
+            button.setAttribute("class", "myButton");
+            flipCardBack.appendChild(button);
+
+            flipCardContainer.appendChild(flipCard);
+
+        }
+
+    })
+}
+
+//function createPopUp(allBooks) {
+//
+//    var myPopUp = document.createElement("div");
+//    myPopUp.setAttribute("class", "my-pop-up");
+//
+//    var myPopUpContent = document.createElement("div");
+//    myPopUpContent.setAttribute("class", "my-pop-up-content");
+//    myPopUp.appendChild(myPopUpContent);
+//
+//    var bookImageDetailed = document.createElement("IMG");
+//    bookImageDetailed.setAttribute('src', bookCoverDetailedArray[i]);
+//    myPopUpContent.appendChild(bookImageDetailed);
+//
+//    var closePopUp = document.createElement("span");
+//    closePopUp.setAttribute("class", "close");
+//    myPopUpContent.appendChild(closePopUp);
+//
+//    imageButton.appendChild(myPopUp)
+//
+//    let imageButton = document.getElementById("myButton")
+//    imageButton.addEventListener("click", function () {
+//        
+//        myPopUp.style.display = "block";
+//
+//
+//    })
+//}
+//
+//
+//btn.onclick = function () {
+//    modal.style.display = "block";
+//}
+
+
+
+//function createPopUp(allBooks) { 
+//    
+//    let imageButton = document.getElementById("myButton")
+//    imageButton.addEventListener("click", function (e) { 
+//        
+//    imageButton.classList.toggle("show")}
+//                                 )
+//    
+//    
+//}
 
 
 
