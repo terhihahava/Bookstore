@@ -25,7 +25,7 @@ fetch(url)
         createLanguageArray(allBooks)
 
                 createImage(allBooks)
-        createFilteredBooks(allBooks)
+//        createFilteredBooks(allBooks)
 
 
         //        createPopUp(allBooks)
@@ -131,7 +131,6 @@ function createLanguageArray(allBooks) {
 function createImage(allBooks) {
 
     var flipCardContainer = document.getElementById("allMyBooks");
-    console.log(flipCardContainer)
 
     for (var i = 0; i < allBooks.length; i++) {
         var flipCard = document.createElement("div");
@@ -167,9 +166,19 @@ function createImage(allBooks) {
         flipCardBack.appendChild(bookDescription);
 
         var button = document.createElement("button");
-        button.innerHTML = "Read more";
         button.setAttribute("class", "myButton");
         flipCardBack.appendChild(button);
+        
+        var a = document.createElement("a");
+        a.setAttribute("class", "fancybox");
+        a.setAttribute("data-fancybox", "gallery");
+        a.setAttribute("href", bookCoverDetailedArray[i]);
+        a.setAttribute("src", bookCoverDetailedArray[i]);
+        a.innerHTML = "Read more";
+        button.appendChild(a);
+        
+        console.log(a)
+        
 
         flipCardContainer.appendChild(flipCard);
     }
@@ -250,6 +259,7 @@ function createFilteredBooks(allBooks) {
             button.innerHTML = "Read more";
             button.setAttribute("class", "myButton");
             flipCardBack.appendChild(button);
+           
 
             flipCardContainer.appendChild(flipCard);
 
