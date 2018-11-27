@@ -6,8 +6,8 @@ fetch(url)
         return response.json();
     })
     .then(json => {
-    
-    console.log(json.books)
+
+        //    console.log(json.books)
 
         let allBooks = json.books
 
@@ -18,117 +18,15 @@ fetch(url)
             allBooks.descripcion
         let language = allBooks.idioma
 
-        //        console.log(allBooks[0].portada)
 
-        createBookCoverArray(allBooks)
-        createBookTitleArray(allBooks)
-        createBookCoverDetailedArray(allBooks)
-        createBookDescriptionArray(allBooks)
-        createLanguageArray(allBooks)
 
-                createImage(allBooks)
+        //                createImage(allBooks)
         createFilteredBooks(allBooks)
-
-
-        //        createPopUp(allBooks)
-
 
 
     })
 
 
-
-function createBookCoverArray(allBooks) {
-
-
-    //    console.log(allBooks)
-    //    console.log(allBooks[0])
-    //    console.log(allBooks[0].portada)
-    //    console.log(allBooks[1].portada)
-
-
-    bookCoverArray = [];
-
-    for (var i = 0; i < allBooks.length; i++) {
-
-        bookCoverArray.push(allBooks[i].portada)
-
-        //    bookCoverArray.push(allBooks.map((allBooks => {
-        //        return bookCover;
-        //    })))
-
-    }
-
-    //    console.log(bookCoverArray)
-}
-
-//createBookCoverArray()
-
-
-function createBookTitleArray(allBooks) {
-
-    bookTitleArray = [];
-
-    for (var i = 0; i < allBooks.length; i++) {
-
-        bookTitleArray.push(allBooks[i].titulo)
-
-        //    bookTitleArray.push(allBooks.map((allBooks => {
-        //        return bookTitle;
-        //    })))
-    }
-
-    //    console.log(bookTitleArray)
-}
-
-
-function createBookCoverDetailedArray(allBooks) {
-
-    bookCoverDetailedArray = [];
-
-    for (var i = 0; i < allBooks.length; i++) {
-
-        bookCoverDetailedArray.push(allBooks[i].detalle)
-
-        //    bookTitleArray.push(allBooks.map((allBooks => {
-        //        return bookTitle;
-        //    })))
-    }
-
-    //    console.log(bookTitleDetailedArray)
-}
-
-function createBookDescriptionArray(allBooks) {
-
-    bookDescriptionArray = [];
-
-    for (var i = 0; i < allBooks.length; i++) {
-
-        bookDescriptionArray.push(allBooks[i].descripcion)
-
-        //    bookTitleArray.push(allBooks.map((allBooks => {
-        //        return bookTitle;
-        //    })))
-    }
-
-    //    console.log(bookDescriptionArray)
-}
-
-function createLanguageArray(allBooks) {
-
-    languageArray = [];
-
-    for (var i = 0; i < allBooks.length; i++) {
-
-        languageArray.push(allBooks[i].idioma)
-
-        //    bookTitleArray.push(allBooks.map((allBooks => {
-        //        return bookTitle;
-        //    })))
-    }
-
-    //    console.log(languageArray)
-}
 
 function createImage(allBooks) {
 
@@ -149,7 +47,7 @@ function createImage(allBooks) {
 
 
         var bookImage = document.createElement("IMG");
-        bookImage.setAttribute('src', bookCoverArray[i]);
+        bookImage.setAttribute('src', allBooks[i].portada);
         flipCardFront.appendChild(bookImage);
 
 
@@ -158,29 +56,29 @@ function createImage(allBooks) {
         flipCardInner.appendChild(flipCardBack);
 
         var bookTitle = document.createElement("h1");
-        bookTitle.innerHTML = bookTitleArray[i];
+        bookTitle.innerHTML = allBooks[i].titulo;
         bookTitle.setAttribute("class", "book-title");
         flipCardBack.appendChild(bookTitle);
 
         var bookDescription = document.createElement("p");
-        bookDescription.innerHTML = bookDescriptionArray[i];
+        bookDescription.innerHTML = allBooks[i].descripcion;
         bookTitle.setAttribute("class", "book-description");
         flipCardBack.appendChild(bookDescription);
 
         var button = document.createElement("button");
         button.setAttribute("class", "myButton");
         flipCardBack.appendChild(button);
-        
+
         var a = document.createElement("a");
         a.setAttribute("class", "fancybox");
         a.setAttribute("data-fancybox", "gallery");
-        a.setAttribute("href", bookCoverDetailedArray[i]);
-        a.setAttribute("src", bookCoverDetailedArray[i]);
+        a.setAttribute("href", allBooks[i].detalle);
+        a.setAttribute("src", allBooks[i].detalle);
         a.innerHTML = "Read more";
         button.appendChild(a);
-        
+
         console.log(a)
-        
+
 
         flipCardContainer.appendChild(flipCard);
     }
@@ -192,11 +90,6 @@ function createImage(allBooks) {
 
 function createFilteredBooks(allBooks) {
 
-    let bookCoverResults = [];
-    let bookCoverDetailedResults = [];
-    let bookTitleResults = [];
-    let bookDescriptionResults = [];
-    let bookLanguageResults = [];
 
     let searchButton = document.getElementById("search-button")
     searchButton.addEventListener("click", function (e) {
@@ -206,23 +99,75 @@ function createFilteredBooks(allBooks) {
 
         console.log(term)
 
+        var flipCardContainer = document.getElementById("allMyBooks");
+        
+        flipCardContainer.innerHTML=null;
+
 
         for (var i = 0; i < allBooks.length; i++) {
 
 
-            if (bookTitleArray[i].toLowerCase().indexOf(term) != -1 || bookDescriptionArray[i].toLowerCase().indexOf(term) != -1) {
+            if (allBooks[i].titulo.toLowerCase().includes(term) || allBooks[i].descripcion.toLowerCase().includes(term)) {
+                
+                console.log(allBooks[i].titulo)
 
-                bookCoverResults.push(bookCoverArray[i]);
-                bookCoverDetailedResults.push(bookCoverDetailedArray[i]);
-                bookTitleResults.push(bookTitleArray[i]);
-                bookDescriptionResults.push(bookDescriptionArray[i]);
+                var flipCard = document.createElement("div");
+                flipCard.setAttribute("class", "flip-card");
 
-            } 
-        } console.log(bookTitleResults)
 
-        for (var i = 0; i < bookCoverResults.length; i++) {
+                var flipCardInner = document.createElement("div");
+                flipCardInner.setAttribute("class", "flip-card-inner");
+                flipCard.appendChild(flipCardInner);
 
-            console.log(bookCoverResults[i])
+                flipCardFront = document.createElement("div");
+                flipCardFront.setAttribute("class", "flip-card-front");
+                flipCardInner.appendChild(flipCardFront);
+
+
+                var bookImage = document.createElement("IMG");
+                bookImage.setAttribute('src', allBooks[i].portada);
+                flipCardFront.appendChild(bookImage);
+
+
+                flipCardBack = document.createElement("div");
+                flipCardBack.setAttribute("class", "flip-card-back");
+                flipCardInner.appendChild(flipCardBack);
+
+                var bookTitle = document.createElement("h1");
+                bookTitle.innerHTML = allBooks[i].titulo;
+                bookTitle.setAttribute("class", "book-title");
+                flipCardBack.appendChild(bookTitle);
+
+                var bookDescription = document.createElement("p");
+                bookDescription.innerHTML = allBooks[i].descripcion;
+                bookTitle.setAttribute("class", "book-description");
+                flipCardBack.appendChild(bookDescription);
+
+                var button = document.createElement("button");
+                button.setAttribute("class", "myButton");
+                flipCardBack.appendChild(button);
+
+                var a = document.createElement("a");
+                a.setAttribute("class", "fancybox");
+                a.setAttribute("data-fancybox", "gallery");
+                a.setAttribute("href", allBooks[i].detalle);
+                a.setAttribute("src", allBooks[i].detalle);
+                a.innerHTML = "Read more";
+                button.appendChild(a);
+
+
+                flipCardContainer.appendChild(flipCard);
+            }
+        }
+    })
+}
+
+
+
+
+
+
+
 
 
 //            var flipCardContainer = document.getElementById("allMyBooks");
@@ -265,12 +210,12 @@ function createFilteredBooks(allBooks) {
 //
 //            flipCardContainer.appendChild(flipCard);
 
-        }
-
-    })
-
-
-}
+//        }
+//
+//    })
+//
+//
+//}
 
 
 //function createPopUp(allBooks) {
